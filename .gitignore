@@ -1,0 +1,28 @@
+# Python environment files
+backend/venv/
+backend/venv2/
+backend/env/
+backend/.venv/
+backend/__pycache__/
+backend/**/*.pyc
+backend/**/__pycache__/
+
+# Sensitive environment variables — NEVER commit this
+backend/.env
+backend/.env.local
+
+# Generated data — large files, not needed in repo
+backend/data/
+backend/static/audio/
+
+# Node dependency files
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+
+# Log files and OS cache
+.DS_Store
+Thumbs.db
+*.log
+*.sqlite3
+*.db
