@@ -1,0 +1,254 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root, :root.dark, :root.light {
+  --bg-app: #fcfaf7;
+  --bg-app-gradient: radial-gradient(at 0% 0%, rgba(220, 200, 180, 0.25) 0px, transparent 50%),
+                     radial-gradient(at 50% 0%, rgba(245, 240, 230, 0.2) 0px, transparent 50%),
+                     radial-gradient(at 100% 100%, rgba(230, 220, 205, 0.3) 0px, transparent 50%);
+  --bg-sidebar: rgba(244, 238, 228, 0.9);
+  --bg-header: #faf6ee;
+  --border-color: rgba(120, 100, 80, 0.15);
+  --text-primary: #2c2520;
+  --text-secondary: #7c6a5e;
+  
+  --bg-user-bubble: #e6dfd3;
+  --text-user-bubble: #2c2520;
+  --border-user-bubble: rgba(120, 100, 80, 0.18);
+  
+  --bg-input: #ffffff;
+  --border-input: rgba(120, 100, 80, 0.2);
+  
+  --grid-line: rgba(120, 100, 80, 0.03);
+  --scrollbar-thumb: rgba(120, 100, 80, 0.25);
+  
+  --markdown-pre-bg: rgba(244, 238, 228, 0.8);
+  --markdown-code-bg: rgba(120, 100, 80, 0.08);
+  --markdown-text: #2c2520;
+
+  --color-accent: #8c6239;
+  --color-accent-dim: rgba(140, 98, 57, 0.15);
+  --color-accent-hover: #6f4e2f;
+  
+  --fluid-orb-bg: linear-gradient(-45deg, #eae3d2, #dfd3c3, #f4e0c9, #f7f5f0);
+  --fluid-orb-border: rgba(14, 165, 233, 0.2);
+  --fluid-orb-glow: rgba(140, 98, 57, 0.1);
+  --fluid-orb-inner: rgba(140, 98, 57, 0.15);
+  --fluid-orb-shadow: rgba(120, 100, 80, 0.12);
+  
+  --fluid-orb-think-bg: linear-gradient(-45deg, #dfd3c3, #c5a880, #f4e0c9, #eae3d2);
+  --fluid-orb-think-border: rgba(140, 98, 57, 0.35);
+  --fluid-orb-think-glow: rgba(140, 98, 57, 0.2);
+}
+
+@layer base {
+  body {
+    font-family: "Open Sans", sans-serif !important;
+    background-color: var(--bg-app);
+    background-image: var(--bg-app-gradient);
+    background-attachment: fixed;
+    min-height: 100vh;
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Custom sleek scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 10px;
+    transition: background 0.3s ease;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+  }
+}
+
+.glass-panel {
+  background: var(--bg-sidebar);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.glass-input {
+  background: var(--bg-input);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-input);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.markdown-body {
+  color: var(--markdown-text) !important;
+  transition: color 0.3s ease;
+}
+
+.markdown-body pre {
+  background-color: var(--markdown-pre-bg) !important;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.markdown-body code:not(pre code) {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  background-color: var(--markdown-code-bg);
+  padding: 0.15rem 0.3rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.markdown-body p {
+  margin-bottom: 1rem;
+}
+
+
+
+/* Equalizer / Audio Wave animation */
+@keyframes wave-bounce {
+  0%, 100% {
+    transform: scaleY(0.3);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.animate-wave-bar {
+  animation: wave-bounce 1s ease-in-out infinite;
+  transform-origin: bottom;
+}
+
+/* Custom glowing effects and buttons */
+.btn-glow {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+.btn-glow:hover {
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.glow-logo {
+  text-shadow: 0 0 8px var(--text-primary), 0 0 15px var(--border-color);
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+/* AI Welcome Orb and Ring Animations */
+@keyframes orb-pulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 20px var(--fluid-orb-glow)) drop-shadow(0 0 40px var(--fluid-orb-glow));
+  }
+  50% {
+    transform: scale(1.04);
+    filter: drop-shadow(0 0 35px var(--fluid-orb-glow)) drop-shadow(0 0 60px var(--fluid-orb-glow));
+  }
+}
+
+@keyframes orb-rotate-clockwise {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes orb-rotate-counter {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+.ai-orb-container {
+  animation: orb-pulse 4s ease-in-out infinite;
+}
+
+.ai-orb-ring-1 {
+  animation: orb-rotate-clockwise 22s linear infinite;
+}
+
+.ai-orb-ring-2 {
+  animation: orb-rotate-counter 16s linear infinite;
+}
+
+.ai-orb-ring-think {
+  animation: orb-rotate-clockwise 1.2s linear infinite;
+}
+
+/* Grid overlay background */
+.grid-pattern {
+  background-size: 30px 30px;
+  background-image: 
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  transition: background-image 0.3s ease;
+}
+
+/* 3D Fluid Morphing Orb */
+@keyframes morph-orb {
+  0% {
+    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+  }
+  33% {
+    border-radius: 70% 30% 52% 48% / 60% 40% 60% 40%;
+  }
+  66% {
+    border-radius: 50% 50% 30% 70% / 50% 60% 40% 50%;
+  }
+  100% {
+    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.fluid-orb {
+  background: var(--fluid-orb-bg);
+  background-size: 400% 400%;
+  animation: morph-orb 8s ease-in-out infinite, gradient-shift 14s ease-in-out infinite;
+  box-shadow: 
+    0 0 35px var(--fluid-orb-glow),
+    inset 0 0 20px var(--fluid-orb-inner),
+    inset 0 0 45px var(--fluid-orb-shadow);
+  border: 1px solid var(--fluid-orb-border);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.fluid-orb-think {
+  background: var(--fluid-orb-think-bg);
+  background-size: 400% 400%;
+  animation: morph-orb 2s ease-in-out infinite, gradient-shift 4s ease-in-out infinite;
+  box-shadow: 
+    0 0 45px var(--fluid-orb-think-glow),
+    inset 0 0 25px var(--fluid-orb-inner),
+    inset 0 0 50px var(--fluid-orb-shadow);
+  border: 1px solid var(--fluid-orb-think-border);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
