@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+pydantic
+python-dotenv
+python-multipart
+huggingface_hub
+langchain
+langchain-community
+langchain-huggingface
+chromadb
+sentence-transformers
+pymupdf
+python-docx
+faster-whisper
+gTTS
